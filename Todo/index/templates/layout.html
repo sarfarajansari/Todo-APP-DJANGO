@@ -1,0 +1,54 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.82.0">
+    <title>Todo App</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+   
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    
+  </head>
+<body class="bg-dark text-white">
+    
+    <main >
+    <div class="container py-4">
+        <header class="pb-3 mb-4 border-bottom ">
+        <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+            <svg xmlns='http://www.w3.org/2000/svg' width="40" height="32" class="me-2" class='ionicon' viewBox='0 0 512 512'><title>Code Working</title><circle cx='256' cy='256' r='26'/><circle cx='346' cy='256' r='26'/><circle cx='166' cy='256' r='26'/><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M160 368L32 256l128-112M352 368l128-112-128-112'/></svg>
+            <span class="fs-4">TODO APP</span>
+            
+        </a>
+        </header>
+        
+        {% block content %}
+
+        {% endblock %}
+        
+        <footer class="pt-3 mt-4 text-white text-muted border-top">
+        &copy; 2021 Sarfaraj Ansari
+        </footer>
+    </div>
+    </main>
+
+
+        
+    </body>
+</html>

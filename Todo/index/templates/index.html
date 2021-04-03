@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block content %} 
+
+<script>
+    function delete_task(id){
+        var taskid="#task"+String(id)
+        var formid="#form"+String(id)
+        document.querySelector(taskid).className="text-decoration-line-through"
+        document.querySelector(formid).submit()
+    }
+</script>
+<br><br>
+<div class="container   ">
+    <div class="col-lg-8 bg-secondary  col-md-10  shadow p-3 mb-5  rounded" >
+        {% if tasks %}
+            {% for task in tasks reversed %}
+                {% if not task.done %}
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <form id="form{{task.id}}" action="{% url 'delete' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="form-check">
+                                    <input class="form-check-input" name="rmtask" onclick="delete_task('{{task.id}}')" type="checkbox" value="{{task.id}}" id="flexCheckDefault">
+                                    <p1  style="float: left;" id="task{{task.id}}">{{task.task}}</p1>
+                                    
+                                </div>
+                            </form>  
+                                
+                        </div>
+                    </div>
+                    
+                {% endif %}
+            {% endfor %} 
+            <hr>
+        {% else %}
+            <div class="row">
+                <div class="col">
+                        <hr>
+                    <div class="form-check task">
+                    <form>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Enter task and hit Add task!!
+                            </label>
+                            <hr>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+
+       <form method="POST" action="{% url 'index' %}">
+        <div class="row ">
+
+            <div class="col">
+
+                <div class="input-group mb-3 ">
+                    {% csrf_token %}
+                    <textarea required type="text" name="task" class="form-control bg-dark text-white add-task" rows="1" placeholder="Your tasks" aria-label="Recipient's username" aria-describedby="button-addon2"></textarea>
+                    <button class="btn btn-outline-secondary bg-dark" type="submit" id="button-addon2">Add task</button>
+                </div>
+
+            </div>
+
+        </div>
+       </form>
+
+        
+
+    </div>
+
+</div>
+<div style="text-align: center;">
+    <a href="{% url 'completed' %}"><button style="border: 1px transparent;border-radius: 15px;"  type="button" class="btn link-button btn-success">Completed Tasks</button></a>
+</div>
+
+
+{% endblock %}

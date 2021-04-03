@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %} 
+
+<script>
+    function delete_task(id){
+        var taskid="#task"+String(id)
+        var formid="#form"+String(id)
+        document.querySelector(taskid).className="text-decoration-line-through"
+        document.querySelector(formid).submit()
+    }
+</script>
+<br><br>
+<div class="container   ">
+    <div class="col-lg-8 bg-secondary  col-md-10  shadow p-3 mb-5  rounded" >
+        <div class="row ">
+            <hr>
+            <table class=" table table-secondary ">
+                <tr class="table-dark">
+                    <th  class="table-dark">COMPLETED TASKS</th>
+                    <th class="table-dark">START DATE</th>
+                    <th class="table-dark">END DATE</th>
+                </tr>
+                {% if tasks %}
+                    {% for task in tasks reversed %}
+                        {% if task.done %}
+                            <tr class="table-secondary" >
+                                <td style="text-align: left;" class="table-secondary">{{task.task}}</td>
+                                <td class="table-secondary">{{task.start_date}}</td>
+                                <td class="table-secondary">{{task.complete_date}}</td>
+                            </tr>
+                    
+                        {% endif %}
+                    {% endfor %} 
+                {% endif %}
+                
+            </table>
+            <hr>
+        </div>
+    </div>
+</div>
+
+
+
+<div style="text-align: center;">
+    <a href="{% url 'index' %}"><button style="border: 1px transparent;border-radius: 15px;"  type="button" class="btn link-button btn-secondary">Add more task</button></a>
+</div>
+
+{% endblock %}
